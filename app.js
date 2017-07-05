@@ -1,6 +1,13 @@
 var grade = 0;
 var correct;
 $(function(){
+	var modal = document.getElementById('myModal');
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	var p = document.getElementsByClassName('ans-gio')
+
 
 $('.answer').on('click', function(){
 
@@ -21,12 +28,21 @@ $('.right').on('click',function	(){
 		if (correct.hasClass('correct')){
 			grade = grade +1;
 		}
+		$("html, body").animate({ scrollTop: 0 }, "slow");
 	} else{
 		if (correct.hasClass('correct')){
 			grade = grade +1;
 		}
-		alert("Your grade is " + grade +" of 5");
+		var txt = "Your grade is " + grade +" of 5";
+		$('.ans-gio').text(txt);
+		modal.style.display = "block";
 	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
 });
 
 });
